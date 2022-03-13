@@ -1,0 +1,25 @@
+---
+- name: Setting up ssh banner
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Copy the content to banner file
+    copy:
+      content: "WARNING!! This system is to be accessed only by authorised users\n"
+      dest: /etc/ssh/sshd-banner
+      force: yes
+
+  - name: Add the entry to sshd config file
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      insertafter: '^# no default banner path'
+      line: 'Banner /etc/ssh/sshd-banner'
+    notify: restart_sshd
+
+  handlers:
+  - name: restart_sshd
+    service:
+       name: sshd
+       state: restarted
+

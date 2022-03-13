@@ -1,0 +1,11 @@
+---
+- name: copy module usage
+  hosts: all
+
+  tasks:
+  - name: Copy the content
+    copy:
+      content: "I am there"
+      dest: /etc/saveabort.txt
+      force: no
+

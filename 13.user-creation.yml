@@ -1,0 +1,15 @@
+---
+- name: create multiple users 
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: create multile users 
+      user: 
+        name: "{{ item }}"
+        state: present 
+        groups: test1
+      loop: 
+        - user1
+        - user2
+        - user3

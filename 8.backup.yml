@@ -1,0 +1,11 @@
+---
+- name: Backup /etc/sudoers file to source ansible machine.
+  hosts: all
+
+  tasks:
+  - name: Backup /etc/sudoers using fetch module
+    fetch:
+      src: /etc/sudoers
+      dest: /home/ansible/sudoers_bkp/{{ inventory_hostname }}/
+      flat: yes
+

@@ -1,0 +1,9 @@
+---
+- name: Display IP and hostname of the target machine
+  hosts: all
+
+  tasks:
+    - name: Display IP & Hostname
+      debug:
+         msg: "IP:{{ ansible_default_ipv4.address }}, Hostname:{{ ansible_nodename }}"
+

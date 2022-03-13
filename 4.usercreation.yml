@@ -1,0 +1,11 @@
+---
+- name: Create user test1
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create the user test1
+      user:
+        name: test1
+        comment: Test user
+        password: $6$SBkKOdApJo3GJW/R$JEWCSKWvgHls.O5PRiyBAwKT15Qs9ZOS94dM0P3hZoFUaAmeh.0J2aoimKe1mpXSHf9T5bG6x2kAlBij.96PC.

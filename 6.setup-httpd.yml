@@ -1,0 +1,21 @@
+---
+- name: setup a web server
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: install the package httpd
+      yum:
+        name: httpd
+        state: present 
+
+    - name: Copy index.html
+      copy:
+        src: index.html #mention the absolute path when file not in present working directory
+        dest: /var/www/html/
+
+    - name: start and enable the service. 
+      service:
+        name: httpd
+        state: started
+        enabled: yes
